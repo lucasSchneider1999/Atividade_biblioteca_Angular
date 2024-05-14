@@ -20,8 +20,12 @@ export class LivroslistComponent {
     this.lista.push(new Livro(4, "Os mentirosos"))
   }
 
-  deletar(){
-
+  deletar(id:number){
+    if(confirm("deseja deletar?")){
+      let index = this.lista.findIndex(x => {return x.id == id});
+      this.lista.splice(index, 1);
+      alert("livro deletado");
+    }
   }
 
 }
