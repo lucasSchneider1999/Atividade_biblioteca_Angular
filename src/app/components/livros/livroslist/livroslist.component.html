@@ -8,17 +8,41 @@
             <div class="card">
 
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <h2 class="centralizar">Livros</h2>
+                    <br>
+                    <table class="table table-hover">
                         <thead>
-                            <tr>ID</tr>
-                            <tr>NOME</tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr>1</tr>
-                            <tr>harry potter</tr>
+                            @for (livro of lista; track $index) {
+                                <tr>
+                                    <th>{{livro.id}}</th>
+                                    <th>{{livro.nome}}</th>
+                                    <th class="right">
+                                        <button type="button" class="btn btn-primary" mdbRipple routerLink = "/admin/livros/edit/{{livro.id}}">
+                                            Editar
+                                        </button>
+                                        
+                                        <button type="button" class="btn btn-danger" mdbRipple (click)="deletar()">
+                                            Deletar
+                                        </button>
+                                    </th>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
+
+                    <div class="centralizar">
+                        <button type="button" class="btn btn-primary" mdbRipple routerLink = "/admin/livros/new">
+                            Novo
+                        </button>
+                    </div>
+                <br>
 
             </div>
 
