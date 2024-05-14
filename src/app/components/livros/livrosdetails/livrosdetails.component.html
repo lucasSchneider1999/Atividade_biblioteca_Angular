@@ -1,1 +1,38 @@
-<p>livrosdetails works!</p>
+<br>
+<div class="container">
+    
+    <div class="row">
+
+        <div class="col-lg-4"></div>
+
+        <div class="col-lg-4 centralizar topo">
+            
+            <div class="card">
+                <div class="card-body">
+                    
+                    <br>
+                    <h2>Cadastro Livros</h2>
+                    <br>
+            
+                    <mdb-form-control>
+                        <input mdbInput type="text" id="nome" class="form-control" [(ngModel)]= "livro.nome" />
+                        <label mdbLabel class="form-label" for="nome">Nome</label>
+                    </mdb-form-control>
+        
+                    <br>
+                    <br>
+                    
+                    <button type="button" class="btn btn-primary" mdbRipple (click)="salvar()">
+                        Salvar
+                    </button>
+                    
+                    <br>
+                </div>
+              </div>
+
+        </div>
+
+        <div class="col-lg-4"></div>
+
+    </div>
+</div>
