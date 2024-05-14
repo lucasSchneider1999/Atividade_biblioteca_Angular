@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Livro } from '../../../models/livro';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-livrosdetails',
@@ -34,10 +35,20 @@ export class LivrosdetailsComponent {
 
   salvar(){
     if(this.livro.id > 0){
-      alert("editado com sucesso");
+      Swal.fire({
+        title: 'Sucesso!',
+        text: 'Editado com sucesso',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
       this.router2.navigate(['admin/livros'], {state: {livroEditado: this.livro}})
     }else{
-      alert("salvo com sucesso");
+      Swal.fire({
+        title: 'Sucesso!',
+        text: 'Salvo com sucesso',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
       this.router2.navigate(['admin/livros'], {state: {livroNovo: this.livro}})
     }
   }

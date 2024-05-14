@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Livro } from '../../../models/livro';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-livroslist',
@@ -36,11 +37,28 @@ export class LivroslistComponent {
   }
 
   deletar(id:number){
-    if(confirm("deseja deletar?")){
-      let index = this.lista.findIndex(x => {return x.id == id});
-      this.lista.splice(index, 1);
-      alert("livro deletado");
-    }
+
+    Swal.fire({
+      title: 'Aviso!',
+      text: 'deseja deletar?',
+      icon: 'warning',
+      showConfirmButton: true,
+      showDenyButton: true,
+      confirmButtonText: 'Deletar',
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let index = this.lista.findIndex(x => {return x.id == id});
+        this.lista.splice(index, 1);
+
+        Swal.fire({
+          title: 'Deletado com Sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        })
+      }
+    });
+
   }
 
 }
