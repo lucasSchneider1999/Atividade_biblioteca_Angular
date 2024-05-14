@@ -14,26 +14,24 @@
                     <h2>Login</h2>
                     <br>
 
-                    <div class="form-outline" data-mdb-input-init>
-                        <input type="text" id="usuario" class="form-control" [(ngModel)]="usuario" />
-                        <label class="form-label" for="usuario">Usuario</label>
-                    </div>
+                    <mdb-form-control>
+                        <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]= "usuario" />
+                        <label mdbLabel class="form-label" for="usuario">Usuario</label>
+                    </mdb-form-control>
         
                     <br>
             
-                    <div class="form-outline" data-mdb-input-init>
-                        <input type="password" id="senha" class="form-control" [(ngModel)]="senha" />
-                        <label class="form-label" for="senha">Senha</label>
-                    </div>
+                    <mdb-form-control>
+                        <input mdbInput type="password" id="senha" class="form-control" [(ngModel)]= "senha" />
+                        <label mdbLabel class="form-label" for="senha">Senha</label>
+                    </mdb-form-control>
         
                     <br>
-            
-                    <button type="button" class="btn btn-primary" data-mdb-ripple-init (click)="logar()">
+                    
+                    <button type="button" class="btn btn-primary" mdbRipple (click)="logar()">
                         Logar
                     </button>
-        
-                    <button type="button" class="btn btn-secondary" data-mdb-ripple-init>Cadastrar</button>
-
+                    
                     <br>
                 </div>
               </div>
