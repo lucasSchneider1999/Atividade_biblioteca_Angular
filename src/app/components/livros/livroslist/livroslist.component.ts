@@ -1,18 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild, inject, viewChild } from '@angular/core';
 import { Livro } from '../../../models/livro';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { LivrosdetailsComponent } from '../livrosdetails/livrosdetails.component';
 
 @Component({
   selector: 'app-livroslist',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, MdbModalModule, LivrosdetailsComponent],
   templateUrl: './livroslist.component.html',
   styleUrl: './livroslist.component.scss'
 })
 export class LivroslistComponent {
   
   lista: Livro[] = [];
+
+  //Elementos da modal
+  modalService = inject(MdbModalService); //serve para poder abrir a modal
+  @ViewChild("modalLivrosDetalhe") modalLivrosDetalhe!: TemplateRef<any>;
+  modalRef!: MdbModalRef<any>;
+
+
 
   constructor(){
 
@@ -61,4 +70,7 @@ export class LivroslistComponent {
 
   }
 
+  new(){
+    this.modalRef = this.modalService.open(this.modalLivrosDetalhe);
+  }
 }
