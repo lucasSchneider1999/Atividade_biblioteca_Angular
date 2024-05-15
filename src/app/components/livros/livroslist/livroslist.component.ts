@@ -15,6 +15,7 @@ import { LivrosdetailsComponent } from '../livrosdetails/livrosdetails.component
 export class LivroslistComponent {
   
   lista: Livro[] = [];
+  livroEdit: Livro = new Livro(0, "");
 
   //Elementos da modal
   modalService = inject(MdbModalService); //serve para poder abrir a modal
@@ -71,6 +72,26 @@ export class LivroslistComponent {
   }
 
   new(){
+    this.livroEdit = new Livro(0, "");
     this.modalRef = this.modalService.open(this.modalLivrosDetalhe);
   }
+
+  edit(livro: Livro){
+    this.livroEdit = Object.assign({}, livro); //clonando para evitar referencia de objeto
+    this.modalRef = this.modalService.open(this.modalLivrosDetalhe);
+  }
+
+  retornoDetalhe(livro: Livro){
+
+    if(livro.id > 0){
+      let index = this.lista.findIndex( x => {return x.id == livro.id});
+      this.lista[index] = livro;
+    }else{
+      livro.id = 999
+      this.lista.push(livro);
+    }
+
+    this.modalRef.close();
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
@@ -15,8 +15,10 @@ import Swal from 'sweetalert2'
 
 export class LivrosdetailsComponent {
 
-  livro: Livro = new Livro(0, "");
-  //servve para pegar um parametro de rota
+  @Input("livro") livro: Livro = new Livro(0, "");
+  @Output("retorno") retorno = new EventEmitter<any>();
+
+  //serve para pegar um parametro de rota
   router = inject(ActivatedRoute);
   //serve para redirecionar para outra rota
   router2 = inject(Router);
@@ -51,6 +53,8 @@ export class LivrosdetailsComponent {
       })
       this.router2.navigate(['admin/livros'], {state: {livroNovo: this.livro}})
     }
+
+    this.retorno.emit(this.livro);
   }
 
 }

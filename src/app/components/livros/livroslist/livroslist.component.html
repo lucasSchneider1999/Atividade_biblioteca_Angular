@@ -23,7 +23,7 @@
                                     <th>{{livro.id}}</th>
                                     <th>{{livro.nome}}</th>
                                     <th class="right">
-                                        <button type="button" class="btn btn-primary" mdbRipple routerLink = "/admin/livros/edit/{{livro.id}}">
+                                        <button type="button" class="btn btn-primary" mdbRipple (click)= "edit(livro)">
                                             Editar
                                         </button>
                                         
@@ -72,7 +72,8 @@
         ></button>
     </div>
     <div class="modal-body">
-        <app-livrosdetails></app-livrosdetails>
+
+        <app-livrosdetails [livro]= "livroEdit" (retorno)="retornoDetalhe($event)"></app-livrosdetails>
 
     </div>
     <!-- <div class="modal-footer">
